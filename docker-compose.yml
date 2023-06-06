@@ -1,0 +1,9 @@
+version: '3'
+services:
+  url-shortener:
+    image: url-shortener-next-2
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@host.docker.internal:5432/
+      - LINK_PATH=http://localhost:3000/

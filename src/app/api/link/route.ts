@@ -1,11 +1,9 @@
-import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client'
 import validator from 'validator';
 import { customAlphabet } from 'nanoid'
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
 
-  const prisma = new PrismaClient()
 
   console.log(request.body);
   const { url } = await request.json();
@@ -70,7 +68,7 @@ async function createLink(url: string): Promise<string> {
 
   const prisma = new PrismaClient();
   try {
-    const link = await prisma.link.create({
+    await prisma.link.create({
       data: {
         shortCode: code,
         destination: url

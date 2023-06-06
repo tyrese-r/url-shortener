@@ -36,4 +36,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Deploy to Google Cloud Run
 
-[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+- `gcloud builds submit --tag gcr.io/url-shortener-1448/url-shortener --project url-shortener-1448`
+- 

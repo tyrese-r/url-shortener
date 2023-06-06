@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client'
-import { redirect } from 'next/navigation';
 
 // Server component
 export async function GET(request: Request, context: { params: { code: string } }) {
@@ -20,9 +19,5 @@ export async function GET(request: Request, context: { params: { code: string } 
   } catch (e) {
     console.log(e)
     return (<h1>Yo</h1>)
-    return null
   }
-
-
-  return NextResponse.json({ 'message': 'I am the KING' });
 }

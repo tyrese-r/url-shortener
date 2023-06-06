@@ -15,6 +15,7 @@ export default function NewLinkForm() {
     <form onSubmit={onSubmit}>
       <label>URL</label>
       <input className="bg-zinc-800" {...register("originalURL")} type="url" />
+      <span>{errors?.originalURL?.message}</span>
 
       <button className="bg-zinc-300" type="submit">Submit</button>
       <div></div>
