@@ -1,3 +1,15 @@
+// .eslintrc.json
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "ignorePatterns": [
+    "**/*.js",
+    "**/*.jsx"
+  ]
 }
