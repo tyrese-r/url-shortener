@@ -1,10 +1,11 @@
 "use client"
-import { shortenURL } from '@/services/AnonService';
+import { getURLList, shortenURL } from '@/services/AnonService';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 // import { useForm } from 'react-hook-form';
 
-export default function NewLinkForm() {
+export default function NewLinkForm({updateListFn}: any) {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
   const onSubmit = handleSubmit(onSuccess)
 
@@ -19,15 +20,23 @@ export default function NewLinkForm() {
 
       <button className="bg-zinc-300" type="submit">Submit</button>
       <div></div>
-      { shortURL && <span>Short URL: <a href={shortURL}>{shortURL}</a></span> }
+      { shortURL && <span>Short URL: <Link href={shortURL}>{shortURL}</Link></span> }
     </form>
   )
 
 
   async function onSuccess(data: FormValues) {
     // Send
-    const res = await shortenURL(data.originalURL)
-    setShortURL(res.url)
+    try {
+      const res = await shortenURL(data.originalURL)
+      setShortURL(res.short)
+      updateListFn(Date.now())
+    }catch(e) {
+      console.error(e)
+    } 
+    
+
+    console.log(getURLList())
   }
 }
 

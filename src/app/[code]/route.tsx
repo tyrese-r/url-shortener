@@ -18,6 +18,6 @@ export async function GET(request: Request, context: { params: { code: string } 
 
   } catch (e) {
     console.log(e)
-    return (<h1>Yo</h1>)
+    return new Response(null, {status: 404})
   }
 }
